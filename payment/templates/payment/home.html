@@ -1,0 +1,20 @@
+{% extends 'home.html' %}
+{% load static %}
+{% block title %}Payment Home{% endblock %}
+{% block content %}
+{% if user.is_authenticated and user.is_taxpayer is True %}
+	<div class="form" style="background-image:url({% static 'bg-01.jpg' %}); width: 50%; margin: 0 auto;">
+	{% if tax is not None %}
+	<h3>Your current tax liability</h3>
+	&#8377;{{tax.output_tax}}
+	{% endif %}
+	<h3></h3>
+	<h3>Choose Payment Mode</h3><br>
+    	<ul id="menu" style="list-style: none;" >
+      	<li><a class="btn" href="{% url 'payment:card' %}" style="background-color: orange; color: white;">Credit Card</a></li><br><br>
+      	<li><a class="btn" href="{% url 'payment:netbanking' %}" style="background-color: orange; color: white;">Net Banking</a></li>
+    	</ul>
+    	<br><br><br><br>
+	</div>
+{% endif %}
+{% endblock %}

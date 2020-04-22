@@ -1,0 +1,24 @@
+{% extends 'home2.html' %}
+{% load static %}
+{% block title %}Official{% endblock %}
+{% block content %}
+{% if user.is_authenticated and user.is_official is True %}
+<div class="container" style="border: 2px solid #1c87c9;">
+  <div class="form-inline">
+  	<h3 style="background-color: #1c87c9; color: white;">Your personal information</h3>
+  	<div class="form-group">
+      <strong style="color: darkred">Name:</strong>{{ request.user.first_name}} {{request.user.last_name }}<br>
+      <strong style="color: darkred;">Email:</strong>{{ request.user.email }}<br>
+      <strong style="color: darkred;">GSTIN:</strong>{{ request.user.gstin }}<br>
+      {% for o in off %}
+		{% if o.user == request.user %}
+			<strong style="color: darkred;">User ID:</strong>{{ o.uid }}
+		{% endif %}
+      {% endfor %}
+    </div>
+    <h3 style="background-color: #1c87c9;color: white;">A downloadable reference for HSN and GST slabs of goods</h3>
+    <a href="{{ MEDIA_URL }}GST_HSN.csv" download="GST_HSN" style="color: blue;">GST_HSN</a>
+  </div>
+</div>
+{% endif %}
+{% endblock %}

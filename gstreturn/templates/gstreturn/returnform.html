@@ -1,0 +1,30 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <title>GST Return</title>
+</head>
+<body>
+  <br><br>
+  <div class="container" style="border: 2px solid #1c87c9;">
+  <form class="form-inline" method="POST">
+  {% csrf_token %}
+  <div class="form-inline">
+    <h3 style="background-color: #1c87c9; color: white;">GST Return1 Form</h3>
+    {% for field in return_form %}
+    <div class="form-group">
+      <label><strong>{{ field.label_tag }}</strong></label>
+      {{ field }}
+    </div>
+    {% endfor %}
+  </div>
+  <button type="submit" class="btn" style="background-color: #1c87c9; color: white;">Submit Return Form</button><br><br>
+  </form>
+  </div>
+</body>
+</html>

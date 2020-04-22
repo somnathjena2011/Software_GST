@@ -1,0 +1,26 @@
+{% extends 'home.html' %}
+{% load static %}
+{% block title %}Taxpayer Registration{% endblock %}
+{% block content %}
+<br><br>
+<div class="form">
+<form method="post">
+  {% csrf_token %}
+  <br>
+  {% for field in user_form %}
+  	<div class="form_div">
+  		<label class="lbl"><strong>{{ field.label_tag }}</strong></label><br>
+  		{{ field }}<br>
+  	</div>
+  {% endfor %}
+  {% for field in taxpayer_profile_form %}
+  	<div class="form_div">
+  		<label class="lbl"><strong>{{ field.label_tag }}</strong></label><br>
+  		{{ field }}<br>
+  	</div>
+  {% endfor %}
+  <br>
+  <button type="submit" class="btn">Register</button><br><br>
+</form>
+</div>
+{% endblock %}

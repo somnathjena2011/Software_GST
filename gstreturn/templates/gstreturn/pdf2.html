@@ -1,0 +1,54 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <style>
+    table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+    padding: 10px;
+    }
+  </style>
+  <title>GSTR-2</title>
+</head>
+<body>
+  <br><br>
+  <h1 style="background: #1c87c9;">Your inward statement of goods and services</h1>
+  <h2 style="background: #1c87c9;">GST Return-2</h2>
+  <div class="container">
+    <pre>
+      <h3 style="background: #1c87c9;">Taxpayer's details</h3>
+      Name      : {{user.first_name}} {{user.last_name}}
+      GSTIN     : {{user.gstin}}
+      Due date  : {{return2.due_date}}
+    </pre>
+    <table style="border: 1px;">
+    <tr>
+      <th>GSTIN of Provider</th>
+      <th>Invoice No</th>
+      <th>Value</th>
+      <th>Rate</th>
+      <th>CGST</th>
+      <th>SGST</th>
+      <th>IGST</th>
+    </tr>
+    {% for invoice in invoices %}
+    {% if invoice.verified is True %}
+      <tr>
+        <td>{{ invoice.taxpayer.user.gstin }}</td>
+        <td>{{ invoice.invoiceNo }}</td>
+        <td>{{ invoice.value }}</td>
+        <td>{{ invoice.gst_rate }}</td>
+        <td>{{ invoice.cgst }}</td>
+        <td>{{ invoice.sgst }}</td>
+        <td>{{ invoice.igst }}</td>
+      </tr>
+    {% endif %}
+    {% endfor %}
+    </table>
+  </div>
+</body>

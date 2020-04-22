@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <title>E-way Billing</title>
+</head>
+<body>
+  <br><br>
+  <div class="container">
+    <pre>
+      <h3>TRANSACTION DETAILS</h3>
+      Transaction type : {{bill.tr_type}}
+      SUB type         : {{bill.sub_type}}
+      Bill No.         : {{bill.billno}}
+      <h3>GENERATOR</h3>
+      GSTIN            : {{bill.generator_gstin}}
+      Name             : {{bill.from_name}}
+      Address          : {{bill.from_address}}
+      PIN              : {{bill.from_pin}}
+      <h3>RECIPENT</h3>
+      GSTIN            : {{bill.recipent_gstin}}
+      Name             : {{bill.to_name}}
+      Address          : {{bill.to_address}}
+      PIN              : {{bill.to_pin}}
+      <h3>PRODUCT DETAILS</h3>
+      Product Name     : {{bill.product_name}}
+      HSN              : {{bill.hsn}}
+      Value            : {{bill.value}}
+      Tax              : {{bill.tax_amt}}
+      <h3>TRANPORTATION DETAILS</h3>
+      Transport No.    : {{bill.transportNo}}
+      Distance         : {{bill.distance}}
+    </pre>
+  </div>
+</body>

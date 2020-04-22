@@ -1,0 +1,8 @@
+{% extends 'home.html' %}
+{% load static %}
+{% block title %}Taxpayer{% endblock %}
+{% block content %}
+	<strong style="color: darkred;">{{ notification.title }}</strong><br>
+	<strong style="color:darkred;">{{ notification.message }}</strong>
+	<a href="{% url 'notification:delete' notification_id=notification.id %}">Mark as read</a>
+{% endblock %}

@@ -1,0 +1,26 @@
+{% extends 'home2.html' %}
+{% load static %}
+{% block title %}Official Registration{% endblock %}
+{% block content %}
+<br><br>
+<div class="form">
+<form method="post">
+  {% csrf_token %}
+  <br>
+  {% for field in user_form %}
+  	<div class="form_div"> 
+  		<label class="lbl"><strong>{{ field.label_tag }}</strong></label><br>
+  		{{ field }}<br>
+  	</div>
+  {% endfor %}
+  {% for field in official_profile_form %}
+  	<div class="form_div">
+  		<label class="lbl"><strong>{{ field.label_tag }}</strong></label><br>
+  		{{ field }}<br>
+  	</div>
+  {% endfor %}
+  <br>
+  <button type="submit" class="btn">Register</button><br><br>
+</form>
+</div>
+{% endblock %}

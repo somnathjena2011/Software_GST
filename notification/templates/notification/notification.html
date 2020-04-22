@@ -1,0 +1,13 @@
+{% extends 'home.html' %}
+{% load static %}
+{% block title %}Taxpayer{% endblock %}
+{% block content %}
+<div class="container" style="border: 2px solid #1c87c9;">
+  <div class="form-inline">
+  	<h3 style="background-color: #1c87c9;">Notifications</h3>
+  	{% for notification in notifications %}
+		<a href="{{notification.id}}">{{ notification.title }}</a><br>
+	{% endfor %}
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,20 @@
+{% extends 'home.html' %}
+{% load static %}
+{% block title %}Taxpayer Login{% endblock %}
+{% block content %}
+<br><br>
+<div class="form">
+<form method="post">
+  {% csrf_token %}
+  <br>
+  {% for field in form %}
+  	<div class="form_div">
+  		<label class="lbl"><strong>{{ field.label_tag }}</strong></label><br>
+  		{{ field }}<br>
+  	</div>
+  {% endfor %}
+  <br>
+  <button type="submit" class="btn">Login</button><br><br>
+</form>
+</div>
+{% endblock %}

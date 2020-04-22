@@ -1,0 +1,47 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <title>E-way Billing</title>
+</head>
+<body>
+	<br><br>
+<div class="container" style="border: 2px solid #1c87c9;">
+	<form class="form-inline" method="post">
+		{% csrf_token %}
+		<div class="form-inline">
+		<h3 style="background-color: #1c87c9;">Taxpayer Details</h3>
+		{% for field in update_form.visible_fields|slice:":2" %}
+			<div class="form-group">
+				<label><strong>{{ field.label_tag }}</strong></label>
+				{{ field }}
+			</div>
+		{% endfor %}	
+		</div>	
+		<div class="form-inline">
+		<h3 style="background-color: #1c87c9;">Transaction Details</h3>
+		{% for field in update_form.visible_fields|slice:"2:7" %}
+			<div class="form-group">
+				<label><strong>{{ field.label_tag }}</strong></label>
+				{{ field }}
+			</div>
+		{% endfor %}	
+		</div>
+		<div class="form-inline">
+		<h3 style="background-color: #1c87c9;">Updating status</h3>
+		{% for field in update_form.visible_fields|slice:"7:" %}
+			<div class="form-group">
+				<label><strong>{{ field.label_tag }}</strong></label>
+				{{ field }}
+			</div>
+		{% endfor %}	
+		</div>
+		<button type="submit" class="btn" style="background-color: #1c87c9; color: white;">Update Taxpayer Liability</button><br><br>
+	</form>	
+</div>
+</body>

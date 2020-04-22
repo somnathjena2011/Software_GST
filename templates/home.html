@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+	{% load static %}
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="{% static 'style1.css' %}">
+	<title>{% block title %}GST{% endblock %}</title>
+</head>
+{% if user.is_authenticated and user.is_taxpayer is True %}
+<body class="bg1">
+	<header class="main1">
+		<span id="sp1">
+			<h1 style="color: rgba(0,0,255,1)">Welcome to GST Portal</h1>
+			<h2 style="color: rgba(0,0,255,1);">A Government Of India initiative</h2>
+		</span>
+		<img src="{% static 'Emblem.png' %}" id="logo">
+	</header>
+	<br>
+	<nav style="background-color: rgba(0,0,255,0.7);" class="navbar navbar-inverse mynav">
+		<div class="container-fluid">
+		<ul id="menu" class="nav navbar-nav">
+			<li><a href="{% url 'accounts:taxpayer_home' %}">Home</a></li>
+			<li><a href="{% url 'ebill:ebill_form' %}">E-way Billing</a></li>
+			<li><a href="{% url 'invoice:upload' %}">Upload Invoice</a></li>
+			<li><a href="{% url 'gstreturn:home' %}">GST Return</a></li>
+			<li><a href="{% url 'payment:home' %}">Pay Tax</a></li>
+			<li><a href="{% url 'itc:home' %}">Claim ITC</a></li>
+			<li><a href="{% url 'accounts:taxpayer_logout' %}" style="float: right;">Logout</a></li>
+			{% if notifs is not None %}
+			<li><a href="{% url 'notification:notifs' %}" style="float: right;">
+				<span class="glyphicon glyphicon-bell"></span>
+				<span style="position: absolute;top: -10px;right: -10px;padding: 5px 10px;border-radius: 50%;background: orange;color: white;">{{notifs.count}}</span>
+			</a></li>
+			{% else %}
+			<li><a href="{% url 'notification:notifs' %}" style="float: right;">
+				<span class="glyphicon glyphicon-bell"></span>
+				<span style="position: absolute;top: -10px;right: -10px;padding: 5px 10px;border-radius: 50%;background: orange;color: white;">0</span>
+			</a></li>
+			{% endif %}
+		</ul>
+		</div>
+	</nav>
+</body>
+{% else %}
+<body class="bg1">
+	<header class="main1">
+		<span id="sp1">
+			<h1 style="color: rgba(0,0,255,1)">Welcome to GST Portal</h1>
+			<h2 style="color: rgba(0,0,255,1);">A Government Of India initiative</h2>
+		</span>
+		<img src="{% static 'Emblem.png' %}" id="logo">
+	</header>
+	<br>
+	<nav style="background-color: rgba(0,0,255,0.7);" class="navbar navbar-inverse mynav">
+		<div class="container-fluid">
+		<ul id="menu" class="nav navbar-nav">
+			<li><a href="{% url 'accounts:taxpayer_home' %}">Home</a></li>
+			<li><a href="{% url 'accounts:taxpayer' %}">Registration</a></li>
+			<li><a href="{% url 'accounts:taxpayer_login' %}">Login</a></li>
+			<li><a href="">E-way Billing</a></li>
+			<li><a href="">Upload Invoice</a></li>
+			<li><a href="">GST Return</a></li>
+			<li><a href="">Pay Tax</a></li>
+			<li><a href="">Claim ITC</a></li>
+		</ul>
+		</div>
+	</nav>
+</body>
+{% endif %}
+<br>
+<div class="container-fluid" style="background: #1c87c9;">
+	<marquee direction="left" loop="">
+		<div style="color: white;" style="display: inline-block;">
+			File your GST Return before 10th of the month. 
+			&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; 
+			&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;
+			Taxpayer need not file Return2. It is automatic.
+		</div>
+	</marquee>
+</div>
+<br>
+{% block content %}
+{% endblock %}
+</html>

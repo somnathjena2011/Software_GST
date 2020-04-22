@@ -1,0 +1,74 @@
+{% extends 'home.html' %}
+{% load static %}
+{% block title %}Taxpayer{% endblock %}
+{% block content %}
+{% if user.is_authenticated and user.is_taxpayer is True %}
+<div class="container" style="border: 2px solid #1c87c9;">
+  <div class="form-inline">
+  	<h3 style="background-color: #1c87c9; color: white;">Your personal information</h3>
+  	<div class="form-group">
+      <strong style="color: darkred;">Name:</strong>{{ request.user.first_name}} {{request.user.last_name }}<br>
+      <strong style="color: darkred;">Email:</strong>{{ request.user.email }}<br>
+      <strong style="color: darkred;">GSTIN:</strong>{{ request.user.gstin }}<br>
+      {% for t in tax %}
+		{% if t.user == request.user %}
+			<strong style="color: darkred;">Input Tax:</strong>&#8377;{{ t.input_tax }}<br>
+			<strong style="color: darkred;">Output Tax:</strong>&#8377;{{ t.output_tax }}
+		{% endif %}
+      {% endfor %}
+    </div>
+    <h3 style="background-color: #1c87c9; color: white;">Your invoices</h3>
+    {% for invoice in invoices %}
+    {% if invoice.taxpayer.user == request.user %}
+    <div class="form-group">
+      <a href="{{ invoice.file.url }}" download="Invoice No. {{ invoice.invoiceNo }}" style="color: blue;">Invoice No. {{ invoice.invoiceNo }}</a>
+    </div>
+    {% endif %}
+    {% endfor %}
+    <h3 style="background-color: #1c87c9; color: white;">A downloadable reference for HSN and GST slabs of goods</h3>
+    <a href="{{ MEDIA_URL }}GST_HSN.csv" download="GST_HSN" style="color: blue;">GST_HSN</a>
+    <h3 style="background-color: #1c87c9; color: white;">A downloadable reference for SAC and GST slabs of services</h3>
+    <a href="{{ MEDIA_URL }}GST_SAC.csv" download="GST_SAC" style="color: blue;">GST_SAC</a>
+  </div>
+</div>
+{% else %}
+<div class="container" style="border:2px solid #1c87c9;">
+  <div class="form-group">
+    <h2 style="background-color: #1c87c9; color: white;">Guidelines to use the GST PORTAL</h2>
+  </div>
+  <div class="form-group">
+    <h4 style="background-color: #1c87c9; color: white;">Registration</h4>
+    <strong style="color: darkred;">Register with your AADHAR and email. On registration you would receive a unique GST Identity Number(GSTIN).
+    Log into the site with your email. Use the GSTIN to file returns, upload invoices or vail e-way billing.
+    </strong>
+  </div>
+  <div class="form-group">
+    <h4 style="background-color: #1c87c9; color: white;">Login</h4>
+    <strong style="color: darkred;">Login to the Portal using your email address and your password entered during registration. You will be redirected to your homepage.
+    </strong>
+  </div> 
+  <h3 style="background-color: #1c87c9; color: white;">You need to login to avail the following services.</h3>
+  <div class="form-group">
+    <h4 style="background-color: #1c87c9; color: white;">E-way Billing</h4>
+    <strong style="color: darkred;">E-way billing must be done for transaction involving inter-state transportation of goods of value not less than &#8377;50000.00</strong>
+  </div>  
+  <div class="form-group">
+    <h4 style="background-color: #1c87c9; color: white;">Upload Invoice</h4>
+    <strong style="color: darkred;">Upload your invoices before 10th of every momnth for verification.</strong>
+  </div> 
+  <div class="form-group">
+    <h4 style="background-color: #1c87c9; color: white;">GST Return</h4>
+    <strong style="color: darkred;">GSTR-1 must be filed before 10th of every month. It is a statement of your output taxes of current month.</strong><br>
+    <strong style="color: darkred;">GSTR-2 is automatically filed based on verified invoices involving you as taxpayer.</strong>
+  </div> 
+  <div class="form-group">
+    <h4 style="background-color: #1c87c9; color: white;">Claim ITC</h4>
+    <strong style="color: darkred;">Claim your Input Tax Credit based on GST Return2 of the current month.</strong>
+  </div> 
+  <div class="form-group">
+    <h4 style="background-color: #1c87c9; color: white;">Pay Tax</h4>
+    <strong style="color: darkred;">Pay your output tax liability based on GST Return1 of the month.</strong>
+  </div> 
+</div>
+{% endif %}
+{% endblock %}

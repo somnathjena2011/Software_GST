@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+	{% load static %}
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="{% static 'style1.css' %}">
+	<title>{% block title %}GST{% endblock %}</title>
+</head>
+{% if user.is_authenticated and user.is_official is True %}
+<body class="bg1">
+	<header class="main1">
+		<span id="sp1">
+			<h1 style="color: rgba(0,0,255,1)">Welcome to GST Portal</h1>
+			<h2 style="color: rgba(0,0,255,1);">A Government Of India initiative</h2>
+		</span>
+		<img src="{% static 'Emblem.png' %}" id="logo">
+	</header><br>
+	<nav style="background-color: rgba(0,0,255,0.7);" class="navbar navbar-inverse mynav">
+		<div class="container-fluid">
+		<ul id="menu" class="nav navbar-nav">
+			<li><a href="{% url 'accounts:official_home' %}" class="active">Home</a></li>
+			<li><a href="{% url 'invoice:download' %}">Verify</a></li>
+			<li><a href="{% url 'accounts:official_logout' %}">Logout</a></li>
+		</ul>
+		</div>
+	</nav>
+</body>
+{% else %}
+<body class="bg1">
+	<header class="main1">
+		<span id="sp1">
+			<h1 style="color: rgba(0,0,255,1)">Welcome to GST Portal</h1>
+			<h2 style="color: rgba(0,0,255,1);">A Government Of India initiative</h2>
+		</span>
+		<img src="{% static 'Emblem.png' %}" id="logo">
+	</header><br>
+	<nav style="background-color: rgba(0,0,255,0.7);" class="navbar navbar-inverse mynav">
+		<div class="container-fluid">
+		<ul id="menu" class="nav navbar-nav">
+			<li><a href="{% url 'accounts:official_home' %}" class="active">Home</a></li>
+			<li><a href="{% url 'accounts:official' %}">Registration</a></li>
+			<li><a href="{% url 'accounts:official_login' %}">Login</a></li>
+			<li><a href="">Verify</a></li>
+		</ul>
+		</div>
+	</nav>
+</body>
+{% endif %}
+{% block content %}
+{% endblock %}
+</html>

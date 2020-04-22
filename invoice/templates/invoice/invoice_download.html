@@ -1,0 +1,16 @@
+{% extends 'home2.html' %}
+{% load static %}
+{% block title %}Invoice Download{% endblock %}
+{% block content %}
+<br>
+<div class="container" style="border: 2px solid #1c87c9;">
+<h3 style="background: #1c87c9; color: white;">Download invoices</h3>
+{% for invoice in invoices %}
+{% if invoice.checked is False %}
+  <a href="{{ invoice.file.url }}" download="Invoice No. {{invoice.invoiceNo}}">Invoice No. {{invoice.invoiceNo}}</a>
+{% endif %}
+{% endfor %}
+<h3 style="background: #1c87c9; color: white;">Update Taxpayer's liability</h3>
+	<a href='{% url 'invoice:update' %}' style="background-color: #1c87c9; border: none; color: white; padding: 20px 20px; text-align: center; text-decoration: none; display: inline-block; font-size: 15px; margin: 2px 2px; cursor: pointer;">Update</a>
+</div>
+{% endblock %}

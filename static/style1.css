@@ -1,0 +1,89 @@
+html {
+	height: 100%;
+}
+.bg1 {
+	background-image: linear-gradient(to bottom right, orange, white, green);
+	background-repeat: no-repeat;
+	background-position: center;
+	height: 100%;
+	background-size: cover;
+	top: 0px;
+	bottom: 0px;
+}
+.main1 #sp1{
+	display: inline-block;
+	width: 80%;
+}
+#logo {
+	position: relative;
+	top : 10px;
+	right : 10px;
+	/*float: right;*/
+	height: 10%;
+	width: 4%;
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    /* display: none; <- Crashes Chrome on hover */
+    -webkit-appearance: none;
+    margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+}
+input[type=number] {
+    -moz-appearance:textfield; /* Firefox */
+}
+.navbar-inverse .navbar-nav > li > a {
+	color: #00d7d6;
+}
+div.form {
+	display: block;
+	text-align: center;
+	padding-top: 3px;
+	padding-bottom: 3px;
+}
+form {
+	display: inline-block;
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
+	background-image: url('bg-01.jpg');
+	/*border-style: inset;*/
+	border-radius: 4px;
+	width: 40%;
+}
+.form_div {
+	padding-top: 2px;
+	padding-bottom: 4px;
+}
+#id_first_name, #id_last_name, #id_email, #id_password, #id_aadhar, #id_uid {
+	width: 45%;
+	padding: 6px 20px;
+	margin: 8px 0;
+	box-sizing: border-box;
+	border-style: solid ;
+	height: 40px;
+	border-width: 0px 0px 3px 0px;
+	border-radius: 5px;
+}
+#id_first_name:focus, #id_last_name:focus, #id_email:focus, #id_password:focus, #id_aadhar:focus, #id_uid:focus {
+	border: 4px solid orange;
+}
+.lbl {
+	text-align: left;
+}
+.btn {
+	width: 40%;
+	height: 40px;
+	font-size: 20px;
+	cursor: pointer;
+}
+.btn:hover {
+	background-color: orange;
+	color: white;
+	border: 2px solid orange;
+}
+.foot {
+	background-color: #000;
+	position: relative;
+	height: 100px;
+	margin-top: -100px;
+}

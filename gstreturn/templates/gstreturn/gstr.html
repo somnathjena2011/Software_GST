@@ -1,0 +1,34 @@
+{% extends 'home.html' %}
+{% load static %}
+{% block title %}Taxpayer{% endblock %}
+{% block content %}
+{% if user.is_authenticated and user.is_taxpayer is True %}
+	<br>
+	<div class="container" style="border: 2px solid #1c87c9;">
+		<div class="form-group">
+		<h3 style="background: #1c87c9; color: white;">Upload more invoices before {{ due }}</h3>
+		<a href="{% url 'invoice:upload' %}" class="btn" style="background: orange; color: white;">Upload Invoice</a>
+		</div>
+		<div class="form-group">
+		<a href="{% url 'gstreturn:create' %}">GSTR-1 FORM</a><br>
+		{% if return1 is not None and return1.filed is False %}
+			<a href="{% url 'gstreturn:return' %}" class="btn" style="background: orange; color: white;">File GSTR-1</a>
+		{% elif return1 is None %}
+			<h3 style="background: #1c87c9; color: white;">Fill up the GSTR-1 form</h3>
+		{% else %}
+			<h3 style="background: #1c87c9; color: white;">Your GSTR-1 has been filed</h3>
+			<a href="{% url 'gstreturn:return' %}">Download it here</a>
+		{% endif %}
+		</div>
+		<div class="form-group">
+		<h3  style="background: #1c87c9; color: white;">GSTR-2</h3>
+		{% if return2 is not None %}
+			<a href="{% url 'gstreturn:return2' %}" class="btn" style="background: orange; color: white;">Download it here</a>
+		{% else %}
+			You don't have any GSTR-2 yet. It will be updated once invoices involving you will be verified.<br>
+			You need not file any GSTR-2 form.
+		{% endif %}
+		</div>
+	</div>
+{% endif %}
+{% endblock %}

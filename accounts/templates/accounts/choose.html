@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Continue as{% endblock %}
+{% block content %}
+<br><br>
+<div class="form" style="background-image:url({% static 'bg-01.jpg' %}); width: 50%; margin: 0 auto;">
+<h3>Continue as:</h3><br>
+    <ul id="menu" style="list-style: none;" >
+      <li><a class="btn" href="{% url 'accounts:taxpayer_home' %}" style="background-color: orange; color: white;">Taxpayer</a></li><br><br>
+      <li><a class="btn" href="{% url 'accounts:official_home' %}" style="background-color: orange; color: white;">Official</a></li>
+    </ul>
+    <br><br><br><br>
+</div>
+{% endblock %}
