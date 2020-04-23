@@ -37,7 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'paypal.standard.ipn',
+    #'paypal.standard.ipn',
     'accounts',
     'ebill',
     'invoice',
@@ -49,8 +49,8 @@ INSTALLED_APPS = [
     'itc',
 ]
 
-PAYPAL_RECEIVER_EMAIL = 'somnathjena.2011@gmail.com'
-PAYPAL_TEST = True
+#PAYPAL_RECEIVER_EMAIL = 'somnathjena.2011@gmail.com'
+#PAYPAL_TEST = True
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
