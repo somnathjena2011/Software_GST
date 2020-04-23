@@ -1,5 +1,4 @@
 from django.shortcuts import render
-from django.shortcuts import render_to_response
 from django.http import HttpResponse, HttpResponseRedirect
 from .models import Notification
 from accounts.models import User, TaxpayerProfile, OfficialProfile

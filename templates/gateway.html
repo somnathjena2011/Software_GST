@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+	{% load static %}
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="{% static 'style1.css' %}">
+	<title>{% block title %}GST{% endblock %}</title>
+</head>
+<body class="bg1">
+	<header class="main1">
+		<span id="sp1">
+			<h1 style="color: rgba(0,0,255,1)">Payment Gateway</h1>
+			<h2 style="color: rgba(0,0,255,1);">Pay your taxes</h2>
+		</span>
+		<img src="{% static 'Emblem.png' %}" id="logo">
+	</header>
+	<br>
+</body>
+{% block content %}
+{% endblock %}
+</html>

@@ -1,12 +1,11 @@
+{% extends 'gateway.html' %}
 {% load static %}
-<!DOCTYPE html>
-<html>
-<head>
-  <title>Card Payment</title>
-</head>
-<body>
+{% block title %}Card Payment{% endblock %}
+{% block content %}
 <br><br>
 <div class="form">
+  <h3>Card Payment</h3>
+  <br>
 <form method="post">
   {% csrf_token %}
   <br>
@@ -20,5 +19,4 @@
   <button type="submit" class="btn">Procced to pay</button><br><br>
 </form>
 </div>
-</body>
-</html>
+{% endblock %}
