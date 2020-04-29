@@ -11,8 +11,8 @@ class InvoiceForm(forms.Form):
 		#model = Invoice
 		fields = ['gstin', 'file']
 		widgets = {
-			'gstin': forms.TextInput(attrs={'class':'inp'}),
-			'file': forms.FileInput(attrs={'class':'inp'})
+			'gstin': forms.TextInput(),
+			'file': forms.FileInput()
 		}
 class UpdateForm(forms.Form):
 	gstin = forms.CharField(max_length=14, label='GSTIN of Taxpayer',widget=forms.TextInput(attrs={'placeholder':'14 character GSTIN'}))

@@ -22,8 +22,8 @@ class NetForm(forms.Form):
 		#model = Invoice
 		fields = ['gstin', 'account','ifsc','amount']
 		widgets = {
-			'gstin': forms.TextInput(attrs={'class':'inp'}),
-			'account': forms.TextInput(attrs={'class':'inp'}),
-			'ifsc':forms.TextInput(attrs={'class':'inp'}),
-			'amount':forms.TextInput(attrs={'class':'inp'}),
+			'gstin': forms.TextInput(attrs={'placeholder':'14 character GSTIN'}),
+			'account': forms.TextInput(attrs={'placeholder':'Account No.'}),
+			'ifsc':forms.TextInput(attrs={'placeholder':'IFSC'}),
+			'amount':forms.TextInput(attrs={'placeholder':'0.00'}),
 		}

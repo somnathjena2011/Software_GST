@@ -4,9 +4,9 @@
 {% block content %}
 <div class="container" style="border: 2px solid #1c87c9;">
   <div class="form-inline">
-  	<h3 style="background-color: #1c87c9;">Notifications</h3>
+  	<h3 style="background-color: #1c87c9; color: white;">Notifications</h3>
   	{% for notification in notifications %}
-		<a href="{{notification.id}}">{{ notification.title }}</a><br>
+		<a href="{{notification.id}}" style="color: blue;">{{ notification.title }}</a><br>
 	{% endfor %}
   </div>
 </div>

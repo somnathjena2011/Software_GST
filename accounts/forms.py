@@ -57,3 +57,10 @@ class OfficialLoginForm(forms.ModelForm):
 			'email': forms.EmailInput(attrs={'class': 'inp'}),
 			'password': forms.PasswordInput(attrs={'class':'inp'})
 		}
+
+class ResetForm(forms.Form):
+	gstin = forms.CharField(max_length=14, label='Enter your GSTIN',widget=forms.TextInput(attrs={'placeholder':'14 character GSTIN'}))
+	old = forms.CharField(label='Old Password',widget=forms.PasswordInput(attrs={'placeholder':'Enter your old password'}))
+	password = forms.CharField(label='New Password',widget=forms.PasswordInput(attrs={'placeholder':'Create a strong password'}))
+	class Meta:
+		fields = ['gstin', 'old', 'password']

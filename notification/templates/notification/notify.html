@@ -4,5 +4,5 @@
 {% block content %}
 	<strong style="color: darkred;">{{ notification.title }}</strong><br>
 	<strong style="color:darkred;">{{ notification.message }}</strong>
-	<a href="{% url 'notification:delete' notification_id=notification.id %}">Mark as read</a>
+	<a href="{% url 'notification:delete' notification_id=notification.id %}" style="color: blue;">Mark as read</a>
 {% endblock %}

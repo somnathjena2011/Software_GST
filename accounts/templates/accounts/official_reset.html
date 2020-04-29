@@ -1,0 +1,22 @@
+{% extends 'home2.html' %}
+{% load static %}
+{% block title %}Official Rest Password{% endblock %}
+{% block content %}
+{% if user.is_authenticated and user.is_official is True %}
+<br><br>
+<div class="form">
+<form method="post">
+  {% csrf_token %}
+  <br>
+  {% for field in form %}
+  	<div class="form_div">
+  		<label class="lbl"><strong>{{ field.label_tag }}</strong></label><br>
+  		{{ field }}<br>
+  	</div>
+  {% endfor %}
+  <br>
+  <button type="submit" class="btn">Submit</button><br><br>
+</form>
+</div>
+{% endif %}
+{% endblock %}

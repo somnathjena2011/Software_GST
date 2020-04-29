@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.urls import reverse
-#from paypal.standard.forms import PayPalPaymentsForm
+from paypal.standard.forms import PayPalPaymentsForm
 from django.http import HttpResponse
 from accounts.models import User,TaxpayerProfile,OfficialProfile
 from invoice.models import Invoice, Return1, Return2

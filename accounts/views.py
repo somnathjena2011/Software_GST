@@ -1,7 +1,7 @@
 from django.contrib.auth import login, authenticate
 from django.shortcuts import redirect, render
 from django.http import HttpResponse, HttpResponseRedirect
-from .forms import OfficialProfileForm, TaxpayerProfileForm, UserForm, TaxpayerLoginForm, OfficialLoginForm
+from .forms import OfficialProfileForm, TaxpayerProfileForm, UserForm, TaxpayerLoginForm, OfficialLoginForm, ResetForm
 from django.contrib.auth.forms import AuthenticationForm
 from .models import User, TaxpayerProfile, OfficialProfile
 from .backends import TaxpayerBackend, OfficialBackend
@@ -167,3 +167,45 @@ def official_logout(request):
 	logout(request)
 	#messages.info(request, "Logged out successfully!")
 	return render(request, 'accounts/choose.html')
+
+@login_required
+def taxpayer_reset(request):
+	if request.method == 'POST':
+		usr = request.user
+		gstin = request.POST.get('gstin')
+		if usr.is_taxpayer is True and usr.gstin==gstin:
+			old = request.POST.get('old')
+			if str(old)==str(usr.password):
+				newp = request.POST.get('password')
+				usr.password = newp
+				usr.save()
+				logout(request)
+				return render(request,"accounts/choose2.html")
+			else:
+				return HttpResponse("<h1>Incorrect password entered</h1>")
+		else:
+			return HttpResponse("<h1>Invalid operation</h1>")
+	else:
+		form = ResetForm()
+		return render(request,"accounts/taxpayer_reset.html",{'form':form})
+
+@login_required
+def official_reset(request):
+	if request.method == 'POST':
+		usr = request.user
+		gstin = request.POST.get('gstin')
+		if usr.is_official is True and usr.gstin==gstin:
+			old = request.POST.get('old')
+			if str(old)==str(usr.password):
+				newp = request.POST.get('password')
+				usr.password = newp
+				usr.save()
+				logout(request)
+				return render(request,"accounts/choose2.html")
+			else:
+				return HttpResponse("<h1>Incorrect password entered</h1>")
+		else:
+			return HttpResponse("<h1>Invalid operation</h1>")
+	else:
+		form = ResetForm()
+		return render(request,"accounts/official_reset.html",{'form':form})
