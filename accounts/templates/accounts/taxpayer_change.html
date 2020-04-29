@@ -1,8 +1,8 @@
 {% extends 'home2.html' %}
 {% load static %}
-{% block title %}Official Rest Password{% endblock %}
+{% block title %}Taxpayer Change Password{% endblock %}
 {% block content %}
-{% if user.is_authenticated and user.is_official is True %}
+{% if user.is_authenticated and user.is_taxpayer is True %}
 <br><br>
 <div class="form">
 <form method="post">
@@ -15,7 +15,7 @@
   	</div>
   {% endfor %}
   <br>
-  <button type="submit" class="btn">Submit</button><br><br>
+  <button type="submit" class="btn">Change Password</button><br><br>
 </form>
 </div>
 {% endif %}

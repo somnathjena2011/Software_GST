@@ -1,7 +1,7 @@
 from django.contrib.auth import login, authenticate
 from django.shortcuts import redirect, render
 from django.http import HttpResponse, HttpResponseRedirect
-from .forms import OfficialProfileForm, TaxpayerProfileForm, UserForm, TaxpayerLoginForm, OfficialLoginForm, ResetForm
+from .forms import OfficialProfileForm, TaxpayerProfileForm, UserForm, TaxpayerLoginForm, OfficialLoginForm, ChangeForm
 from django.contrib.auth.forms import AuthenticationForm
 from .models import User, TaxpayerProfile, OfficialProfile
 from .backends import TaxpayerBackend, OfficialBackend
@@ -169,7 +169,7 @@ def official_logout(request):
 	return render(request, 'accounts/choose.html')
 
 @login_required
-def taxpayer_reset(request):
+def taxpayer_change(request):
 	if request.method == 'POST':
 		usr = request.user
 		gstin = request.POST.get('gstin')
@@ -186,11 +186,11 @@ def taxpayer_reset(request):
 		else:
 			return HttpResponse("<h1>Invalid operation</h1>")
 	else:
-		form = ResetForm()
-		return render(request,"accounts/taxpayer_reset.html",{'form':form})
+		form = ChangeForm()
+		return render(request,"accounts/taxpayer_change.html",{'form':form})
 
 @login_required
-def official_reset(request):
+def official_change(request):
 	if request.method == 'POST':
 		usr = request.user
 		gstin = request.POST.get('gstin')
@@ -207,5 +207,5 @@ def official_reset(request):
 		else:
 			return HttpResponse("<h1>Invalid operation</h1>")
 	else:
-		form = ResetForm()
-		return render(request,"accounts/official_reset.html",{'form':form})
+		form = ChangeForm()
+		return render(request,"accounts/official_change.html",{'form':form})
