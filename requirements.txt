@@ -22,7 +22,7 @@ lml==0.0.9
 MarkupPy==1.14
 odfpy==1.4.1
 openpyxl==3.0.3
-Pillow==7.1.1
+Pillow==8.1.1
 psycopg2==2.8.5
 pycparser==2.20
 pyexcel-io==0.5.20
